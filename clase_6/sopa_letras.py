@@ -1,6 +1,7 @@
 import random 
 def create_matrix(elemento, palabra, filas, columnas):
-    matriz = [[(elemento) for _ in range(columnas)] for _ in range(filas)]
+    opciones = ["p", "l", "a", "b", "r"]
+    matriz = [[(random.choice(opciones)) for _ in range(columnas)] for _ in range(filas)]
     r_col = random.randint(0,columnas-1-len(palabra))
     r_fil = random.randint(0,filas-1-len(palabra))
 
@@ -11,7 +12,8 @@ def create_matrix(elemento, palabra, filas, columnas):
             matriz[r_fil][contador_col] = p
             contador_col=contador_col+1
         elif True: # case vertical
-            pass # your code is here
+            matriz[contador_fil][r_col] = p
+            contador_fil = contador_fil+1 # your code is here
         
         elif False: # case diagonal
             matriz[contador_fil][contador_col] = p
