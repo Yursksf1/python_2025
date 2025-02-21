@@ -15,34 +15,63 @@ si falla la letra va a ir dibujando --> descontar intentos
 """
 
 import random
-palabras = ["colombia", "venezuela", "argentina", "canada", "portugal", "australia"]
-letras_usadas = []
-num_intentos = 6
 
-palabra = random.choice(palabras)
-print(palabra)
-guiones = ["_" for _ in range(len(palabra))]
+def selecciona_palabra():
+    palabras = ["colombia", "venezuela", "argentina", "canada", "portugal", "australia"]
+    palabra = random.choice(palabras)
+    return palabra
 
-print(" ".join(guiones))
-while num_intentos > 0 and palabra != "".join(guiones):
-    intento = input("ingresa una letra para adivinar la palabra: ")
-    if intento in letras_usadas:
-        print("esta letra ya ha sido usada")
-    else: 
-        letras_usadas.append(intento)
-        print(intento)
-        if intento in palabra:
-            print("la letra que ingresaste se encuentra dentro de la palabra")
-        
-            for idx, letra in enumerate(palabra):
-                if letra == intento:
-                    guiones[idx] = intento
-                
-            print(" ".join(guiones))
+def imprimir_guiones(guiones):
+    print(" ".join(guiones))
 
-        else:
-            num_intentos = num_intentos - 1
-            print("la letra que ingresaste no se encuentra dentro de la palabra")
-            print(f"te quedan {num_intentos} oportunidades")
+def validar_intento(intento, palabra, guiones, num_intentos):
+    print(intento)
+    if intento in palabra:
+        print("la letra que ingresaste se encuentra dentro de la palabra")
+    
+        for idx, letra in enumerate(palabra):
+            if letra == intento:
+                guiones[idx] = intento
+            
+        imprimir_guiones(guiones)
 
-print('el juego ha finalizado')
+    else:
+        num_intentos = num_intentos - 1
+        print("la letra que ingresaste no se encuentra dentro de la palabra")
+        print(f"te quedan {num_intentos} oportunidades")
+    return dict(
+        intento=intento, 
+        palabra=palabra, 
+        guiones=guiones, 
+        num_intentos=num_intentos
+    )
+
+def ingresar_intento(letras_usadas):
+    while True:
+        intento = input("ingresa una letra para adivinar la palabra: ")
+        if intento in letras_usadas:
+            print("esta letra ya ha sido usada")
+        else: 
+            letras_usadas.append(intento)
+            return intento
+
+def run():
+    letras_usadas = []
+    num_intentos = 6
+    palabra = selecciona_palabra()
+    guiones = ["_" for _ in range(len(palabra))]
+    imprimir_guiones(guiones)
+    
+    while num_intentos > 0 and palabra != "".join(guiones):
+        intento = ingresar_intento(letras_usadas)
+        data = validar_intento(intento, palabra, guiones, num_intentos)
+        intento = data.get("intento") 
+        palabra = data.get("palabra")
+        guiones = data.get("guiones")
+        num_intentos = data.get("num_intentos")
+
+    print('el juego ha finalizado')
+
+
+if __name__ == "__main__":
+    run()
