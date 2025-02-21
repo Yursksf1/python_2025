@@ -12,6 +12,13 @@ si falla la letra va a ir dibujando --> descontar intentos
                  colombia --> i --> _ o _ o _ _ i _ 
     5) agregar una validacion de letras que ya fueron usadas (si ya se usaron no deben sumar ni restar intentos)
     6) El juego finaliza cuando se adivina la plabra o se acaben los intentos
+
+    ---- funciones adicionales ---- 
+    1. al finalizar el juego, se muestre un mensaje que informe al usuario si gano o perdio
+    2. al finalizar el juego el programa le pregunte al usuario si desea jugar de nuevo (reiniciar el juego)
+    3. seccion de configuracion: 
+        3.1 permitir que el numero de intentos sea variable, es decir que el usuario pueda elegir con cuantos intentos jugar
+        3.2 permitir seleccionar la categoria de la palabra, (paises, frutas, colores etc...)
 """
 
 import random
