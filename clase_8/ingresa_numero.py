@@ -7,6 +7,8 @@ def ingresa_numero():
         numero = 0
     return numero
 
+print("----> Bienvenido")
 numero_1 = ingresa_numero()
 numero_2 = ingresa_numero()
 print(numero_1 - numero_2)
+print("----> Chao!")

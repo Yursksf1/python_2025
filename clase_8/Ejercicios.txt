@@ -1,0 +1,13 @@
+Crear para los siguientes errores en python
+un archivo .py que presente un ejemplo del error 
+y una ejecucion usando el try and except
+
+- el error artimetico de sumar un texto con un numero  1 + "2"
+- definir una lista de n elementos e intentar acceder al indice de un numero mayor que n
+- una variable no definida 
+- un diccionario None e intentamos acceder a un atributo
+
+
+NOTA: todos los programas van a iniciar con un mensaje 
+de saludo y al finalizar van a presentar un mesnaje de
+depedida
